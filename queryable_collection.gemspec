@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'queryable_collection'
   spec.version       = QueryableCollection::VERSION
   spec.authors       = ['Akil Madan']
-  spec.email         = ['akil.madan@outlook.com']
+  spec.email         = ['support@travellink.com.au']
 
   spec.summary       = 'Allows the creation and querying of a collection of elements'
   spec.description   = 'Allows the caller to define a queryable collection of ' \
