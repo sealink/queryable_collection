@@ -26,7 +26,7 @@ elements = [Employee.new(name: 'Mr Smith', age: 30), Employee.new(name: 'Mrs Wil
 '''
 
 Now define the attributes of that object which are queryable
-Note that the object mustb e able to respond when called with one of these attributes
+Note that the object must be able to respond when called with one of these attributes
 '''ruby
 queryable_attributes = %w(name age)
 '''
