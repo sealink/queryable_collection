@@ -21,30 +21,34 @@ Or install it yourself as:
 ## Usage
 
 Create a list of Arbritrary objects
-'''ruby
+
+```ruby
 elements = [Employee.new(name: 'Mr Smith', age: 30), Employee.new(name: 'Mrs Wilson ', age: 45)]
-'''
+```
 
 Now define the attributes of that object which are queryable
 Note that the object must be able to respond when called with one of these attributes
-'''ruby
+
+```ruby
 queryable_attributes = %w(name age)
-'''
+```
 
 Now create a queryable collection
-'''ruby
+
+```ruby
 queryable_collection = QueryableCollection.create(elements, queryable_attributes)
-'''
+```
 
 You can now query this collection
-'''ruby
+
+```ruby
 queryable_collection.all # Returns all Employee objects
 queryable_collection.first # Returns first Employee object
 queryable_collection.where(name: 'Mr Smith') # Returns a QueryableCollection corresponding with the elements that meet the search criteria
 queryable_collection.find_by(name: 'Mr Smith') #Returns appropriate Employee object
 queryable_collection.empty? #Returns boolean
 queryable_collection.to_a #Returns a copy of the original elements array
-'''
+```
 
 ## Development
 
