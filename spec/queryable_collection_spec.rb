@@ -43,9 +43,35 @@ describe QueryableCollection do
       let(:refined_collection_object) { queryable_collection.first }
       let(:query) { { name: refined_collection_object.name, age: refined_collection_object.age } }
       let(:refined_collection) { queryable_collection.where(query) }
-      it 'should return appropriate worker' do
+      it 'should return appropriate worker & list of objects' do
         expect(refined_collection).to be_a(QueryableCollection::Worker)
         expect(refined_collection.all).to eq [refined_collection_object]
+      end
+    end
+
+    context 'chaining where queries together to refine scope' do
+      let(:elements) {
+        [
+          TestElement.new('first', 18),
+          TestElement.new('second', 18),
+          TestElement.new('third', 23)
+        ]
+      }
+      # First query will refine by age, which is shared by two elements
+      let(:first_query) { { age: elements[0].age } }
+      let(:first_query_expected_objects) { [elements[0], elements[1]] }
+      let(:first_queryable_collection) { queryable_collection.where(first_query) }
+      # Second query will refine by name, which contains only a single element
+      let(:second_query) { { name: elements[0].name } }
+      let(:second_query_expected_objects) { [elements[0]] }
+      let(:second_queryable_collection) {
+        queryable_collection.where(first_query).where(second_query)
+      }
+      it 'should return appropriate worker & list of objects' do
+        expect(first_queryable_collection).to be_a(QueryableCollection::Worker)
+        expect(first_queryable_collection.all).to eq first_query_expected_objects
+        expect(second_queryable_collection).to be_a(QueryableCollection::Worker)
+        expect(second_queryable_collection.all).to eq second_query_expected_objects
       end
     end
 
