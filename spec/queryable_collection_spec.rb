@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe QueryableCollection do
-  let(:elements) { [TestElement.new('first', 1), TestElement.new('second', 2)] }
-  let(:queryable_attributes) { %w(name age) }
+  let(:elements) { [double(name: 'first', age: 1), double(name: 'second', age: 2)] }
+  let(:queryable_attributes) { %w[name age] }
   let(:queryable_collection) { QueryableCollection.create(elements, queryable_attributes) }
   it 'has a version number' do
     expect(QueryableCollection::VERSION).not_to be nil
@@ -52,9 +54,9 @@ describe QueryableCollection do
     context 'chaining where queries together to refine scope' do
       let(:elements) {
         [
-          TestElement.new('first', 18),
-          TestElement.new('second', 18),
-          TestElement.new('third', 23)
+          double(name: 'first', age: 18),
+          double(name: 'second', age: 18),
+          double(name: 'third', age: 23)
         ]
       }
       # First query will refine by age, which is shared by two elements
@@ -102,14 +104,6 @@ describe QueryableCollection do
         new_array.pop
         expect(new_array).not_to eq elements
       end
-    end
-  end
-
-  class TestElement
-    attr_accessor :name, :age
-    def initialize(name, age)
-      @name = name
-      @age = age
     end
   end
 end
