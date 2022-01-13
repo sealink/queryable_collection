@@ -1,5 +1,6 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+# frozen_string_literal: true
+
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'queryable_collection/version'
 
@@ -28,12 +29,10 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'adamantium', '~> 0.2'
 
   spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'coverage-kit'
   spec.add_development_dependency 'dotenv'
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'simplecov'
-  spec.add_development_dependency 'simplecov-rcov'
-  spec.add_development_dependency 'coveralls'
-  spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'pry-byebug'
+  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'rubocop'
 end

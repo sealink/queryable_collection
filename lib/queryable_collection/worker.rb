@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'adamantium'
 
 module QueryableCollection
@@ -6,8 +8,9 @@ module QueryableCollection
 
     def initialize(elements, queryable_attributes)
       @elements = Array(elements)
-      fail(Error, 'Queryable attributes must be a non empty list of attributes') unless
+      raise(Error, 'Queryable attributes must be a non empty list of attributes') unless
         valid_queryable_attributes? queryable_attributes
+
       @queryable_attributes = queryable_attributes.map(&:to_s)
     end
 
@@ -69,7 +72,8 @@ module QueryableCollection
       def validate!
         non_queryable_attributes = @query.keys.reject { |attribute| queryable?(attribute) }
         return if non_queryable_attributes.empty?
-        fail Error, "Attributes #{non_queryable_attributes.join(', ')} can't be used in query"
+
+        raise Error, "Attributes #{non_queryable_attributes.join(', ')} can't be used in query"
       end
     end
   end

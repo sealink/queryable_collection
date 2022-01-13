@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.6
 
 Metrics/LineLength:
   Max: 100
@@ -12,3 +12,6 @@ Style/BlockDelimiters:
 
 Style/TrivialAccessors:
   AllowPredicates: true
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context']

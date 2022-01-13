@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module QueryableCollection
   def self.create(elements, queryable_attributes)
     QueryableCollection::Worker.new elements, queryable_attributes

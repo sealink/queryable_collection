@@ -2,6 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/queryable_collection.svg)](http://badge.fury.io/rb/queryable_collection)
 [![Build Status](https://github.com/sealink/queryable_collection/workflows/Build%20and%20Test/badge.svg?branch=master)](https://github.com/sealink/queryable_collection/actions)
+[![Coverage Status](https://coveralls.io/repos/github/sealink/queryable_collection/badge.svg?branch=master)](https://coveralls.io/github/sealink/queryable_collection?branch=master)
 
 QueryableCollection allows you to create a collection of objects and then query them based on a (user) defined set of queryable properties
 
